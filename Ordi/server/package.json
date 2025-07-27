@@ -1,0 +1,31 @@
+{
+  "name": "ordi-api",
+  "version": "1.0.0",
+  "description": "This is the rest API for the order management system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:generate:local": "dotenv -e .env.local -- npx prisma generate",
+    "db:generate:prod": "dotenv -e .env.production -- npx prisma",
+    "db:push:local": "dotenv -e .env.local -- npx prisma db push",
+    "db:push:prod": "dotenv -e .env.production -- npx prisma db push",
+    "dev": "dotenv -e .env.local -- nodemon index.js",
+    "start": "dotenv -e .env.production -- node index.js"
+  },
+  "author": "Kagiso Monageng",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.12.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.3",
+    "socket.io": "^4.8.1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "dotenv-cli": "^8.0.0",
+    "prisma": "^6.12.0"
+  }
+}
