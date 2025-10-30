@@ -19,6 +19,7 @@ export const addCategory = async (req, res) => {
     const category = await prisma.category.create({ data: { name } });
     res.status(201).json(category);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: 'Failed to add category.' });
   }
 };
@@ -45,6 +46,7 @@ export const deleteCategory = async (req, res) => {
     await prisma.category.delete({ where: { id: parseInt(id) } });
     res.json({ message: 'Category deleted' });
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: 'Failed to delete category.' });
   }
 };

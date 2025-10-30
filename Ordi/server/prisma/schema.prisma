@@ -50,14 +50,22 @@ model OrderItem {
 
 model Reservation {
   id          Int      @id @default(autoincrement())
-  name        String
-  contact     String?
+  customer    Customer @relation(fields: [customerId], references: [id])
+  customerId  Int
   people      Int
   date        DateTime
   time        String
   status      String   @default("pending") // pending, confirmed, cancelled
   notes       String?
   createdAt   DateTime @default(now())
+}
+
+model Customer {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String
+  phone       String
+  Reservation Reservation[]
 }
 
 

@@ -24,6 +24,7 @@ app.use((req, res, next) => {
   req.io = io;
   next();
 });
+// app.use('/', express.static('public')); // Serve static files from 'public' directory
 
 app.use('/api/menu', menuRoutes);
 app.use('/api/categories', categoryRoutes);

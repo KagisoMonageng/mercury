@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:generate:local": "dotenv -e .env.local -- npx prisma generate",
-    "db:generate:prod": "dotenv -e .env.production -- npx prisma",
+
+    "db:migrate:local": "dotenv -e .env.local -- npx prisma migrate dev --name updates",
+    "db:migrate:prod": "dotenv -e .env.production -- npx prisma migrate prod --name updates",
+
+    "db:generate:prod": "dotenv -e .env.production -- npx prisma generate",
     "db:push:local": "dotenv -e .env.local -- npx prisma db push",
     "db:push:prod": "dotenv -e .env.production -- npx prisma db push",
     "dev": "dotenv -e .env.local -- nodemon index.js",

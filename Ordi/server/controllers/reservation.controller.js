@@ -2,16 +2,24 @@ import{ prisma } from "../config/db.js";
 
 export const createReservation = async (req, res) => {
   try {
-    const { name, contact, people, date, time, notes } = req.body;
+    const { customer, people, date, time, notes } = req.body;
 
     const reservation = await prisma.reservation.create({
       data: {
-        name,
-        contact,
         people,
         date: new Date(date),
         time,
         notes,
+        customer: {
+          create: {
+            name: customer.name,
+            email: customer.email,
+            phone: customer.phone,
+          },
+        },
+      },
+      include: {
+        customer: true, // include full customer object in response
       },
     });
 
